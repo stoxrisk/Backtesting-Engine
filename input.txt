@@ -1,0 +1,6 @@
+--SYMBOLS: SPY, TSLA
+--BAR: D
+--ENTRY: BE+RSI()
+--EXIT: RSI
+-- DATETIMES: 9/9/2008-9/9/2018
+-- BARS MEASURE: 5 (looking 5 bars ahead for percentage of profit or loss)
