@@ -2,25 +2,27 @@ import backtrader as bt
 import backtrader.feeds as btfeeds
 import backtrader.indicators as btind
 
-def Strategy(bt.Strategy):
-	def __init__(self):
-		super().__init__()
+class Strategy(bt.Strategy):
 
-	def next(self):
-		super().next()
+    def __init__(self):
+        super().__init__()
 
-	def notify_order(self):
-		super().notify_order()
+    def next(self):
+        super().next()
 
-	def notify_trade(self, trade):
-		super().notify_trade(trade)
+    def notify_order(self):
+        super().notify_order()
 
-def BullishEngulfing(Strategy):
+    def notify_trade(self, trade):
+        super().notify_trade(trade)
 
-	def __init__(self):
-		self.dataclose = self.datas[0].close
-		self.dataopen = self.datas[0].open
-		print(self.datas)
+
+class BullishEngulfing(Strategy):
+
+    def __init__(self):
+        self.dataclose = self.datas[0].close
+        self.dataopen = self.datas[0].open
+        print(self.datas)
 
 
     def notify_order(self, order):
@@ -45,19 +47,19 @@ def BullishEngulfing(Strategy):
         self.order = None
 
 
-	def next(self):
-		if self.order:
-			return
+    def next(self):
+        if self.order:
+            return
 
-		if not self.position:
-			# Bullish Engulfing
-			if (self.dataclose[0] >= self.dataclose[-1] and self.dataclose[0] >= self.dataopen[-1]) and (self. dataopen[0] <= self.dataopen[-1] and self.dataopen[0] <= self.dataopen[-1]):
-				self.order = self.buy()
-			
-			# Bearish Engulfing
-			elif (self.dataopen[0] >= self.dataclose[-1] and self.dataopen[0] >= self.dataopen[-1]) and (self. dataclose[0] <= self.dataopen[-1] and self.dataclose[0] <= self.dataopen[-1]):
-				self.order = self.sell()
-		else: 
+        if not self.position:
+            # Bullish Engulfing
+            if (self.dataclose[0] >= self.dataclose[-1] and self.dataclose[0] >= self.dataopen[-1]) and (self. dataopen[0] <= self.dataopen[-1] and self.dataopen[0] <= self.dataopen[-1]):
+                self.order = self.buy()
+            
+            # # Bearish Engulfing
+            # elif (self.dataopen[0] >= self.dataclose[-1] and self.dataopen[0] >= self.dataopen[-1]) and (self. dataclose[0] <= self.dataopen[-1] and self.dataclose[0] <= self.dataopen[-1]):
+            #     self.order = self.sell()
+        else: 
             # Already in the market ... we might sell
             if len(self) >= (self.bar_executed + 5):
                 # SELL, SELL, SELL!!! (with all possible default parameters)

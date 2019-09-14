@@ -1,12 +1,15 @@
 import Strategy
+
 import backtrader as bt
 import backtrader.feeds as btfeeds
 import backtrader.indicators as btind
 
+from datetime import datetime
+
 def runstrategy():
     args = parse_args()
 
-bullish_engulfing = Strategy.BullishEngulfing()
+bullish_engulfing = Strategy.BullishEngulfing
 
 cerebro = bt.Cerebro()
 cerebro.addstrategy(bullish_engulfing)
