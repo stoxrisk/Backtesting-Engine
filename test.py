@@ -114,9 +114,13 @@ def runstrategy():
 cerebro = bt.Cerebro()
 cerebro.addstrategy(St)
 
-data0 = bt.feeds.YahooFinanceData(dataname='SPXL', fromdate=datetime(2011, 1, 1),
-                                  todate=datetime(2018, 12, 31))
+data0 = bt.feeds.YahooFinanceData(dataname='SPXL', fromdate=datetime(2017, 1, 1),
+                                  todate=datetime(2019, 8, 31))
 cerebro.adddata(data0)
+
+cerebro.broker.setcash(100000.0)
+cerebro.broker.slip_perc(slip_perc=0.0015)
+cerebro.addsizer(bt.sizers.SizerFix, stake=20)
 
 cerebro.run()
 cerebro.plot()
