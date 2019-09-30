@@ -1,0 +1,8 @@
+--SYMBOLS: SPY, TSLA
+--BAR: D
+--LONGENTRY: ENGULFING()+MACD(), BELOWEMA(S), ABOVEEMA(L) ,RSI()
+--SHORTENTRY: ENGULFING()+MACD(), BELOWEMA
+--LONGEXIT: RSI()
+--SHORTEXIT: 
+-- DATETIMES: 9/9/2008-9/9/2018
+# -- BARS MEASURE: 5 (looking 5 bars ahead for percentage of profit or loss)

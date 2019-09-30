@@ -2,6 +2,8 @@ import backtrader as bt
 import backtrader.feeds as btfeeds
 import backtrader.indicators as btind
 
+def _bullish
+
 class Strategy(bt.Strategy):
 
     def __init__(self):
@@ -27,7 +29,7 @@ class BullishEngulfing(Strategy):
         self.buyprice = None
         self.buycomm = None
         self.dataclose = self.datas[0].close
-        self.dataopen = self.datas[0].open
+        self.dataopen = self.datas[0].open  
         print(self.datas)
 
 
